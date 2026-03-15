@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+</nav>
+
+<div id="home" class="section active">
+<div class="container">
+<h2>Bienvenue sur notre serveur</h2>
+<p>Forme ta faction, attaque tes ennemis et domine le serveur.</p>
+</div>
+</div>
+
+<div id="shop" class="section">
+<div class="container">
+<h2>Boutique - Crédits</h2>
+<p>Les paiements sont gérés automatiquement par Tebex. Les crédits arrivent directement en jeu.</p>
+
+<p>Entre ton pseudo Minecraft :</p>
+<input id="username" placeholder="Pseudo Minecraft">
+
+<div class="cards">
+
+<div class="card">
+<h3>1000 Crédits</h3>
+<p>10€</p>
+<button class="btn" onclick="buy('1000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>2000 Crédits</h3>
+<p>20€</p>
+<button class="btn" onclick="buy('2000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>3000 Crédits</h3>
+<p>30€</p>
+<button class="btn" onclick="buy('3000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>4000 Crédits</h3>
+<p>40€</p>
+<button class="btn" onclick="buy('4000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>5000 Crédits</h3>
+<p>50€</p>
+<button class="btn" onclick="buy('5000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>6000 Crédits</h3>
+<p>60€</p>
+<button class="btn" onclick="buy('6000')">Acheter</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="vote" class="section">
+<div class="container">
+<h2>Vote pour le serveur</h2>
+<p>Vote toutes les 24h pour recevoir automatiquement des récompenses en jeu.</p>
+
+<div class="vote-card">
+<h3>Serveur-Minecraft.org</h3>
+<button class="btn" onclick="vote('https://serveur-minecraft.org')">Voter</button>
+</div>
+
+<div class="vote-card">
+<h3>Top-Serveurs.net</h3>
+<button class="btn" onclick="vote('https://top-serveurs.net')">Voter</button>
+</div>
+
+<div class="vote-card">
+<h3>Minecraft-Serveurs.com</h3>
+<button class="btn" onclick="vote('https://minecraft-serveurs.com')">Voter</button>
+</div>
+
+<p style="margin-top:30px">⚡ Les récompenses sont envoyées automatiquement via le plugin Votifier / NuVotifier sur ton serveur Minecraft.</p>
+</div>
+</div>
+
+<footer>
+<p>© 2026 PvP Faction Server</p>
+</footer>
+
+<script>
+function showSection(section){
+const sections=document.querySelectorAll('.section');
+sections.forEach(s=>s.classList.remove('active'));
+document.getElementById(section).classList.add('active');
+}
+
+function copyIP(){
+navigator.clipboard.writeText('play.tonserveur.fr');
+alert('IP copiée : play.tonserveur.fr');
+}
+
+function buy(credits){
+let user=document.getElementById('username').value;
+if(!user){
+alert('Entre ton pseudo Minecraft');
+return;
+}
+
+/* Tebex checkout link (à remplacer par ton vrai store Tebex) */
+let url="https://tonserveur.tebex.io/?ign="+user+"&package="+credits;
+window.open(url,'_blank');
+}
+
+function vote(url){
+window.open(url,'_blank');
+}
+</script>
+
+</body>
+</html>
