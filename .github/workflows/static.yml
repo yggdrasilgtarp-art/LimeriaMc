@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serveur Minecraft PvP/Faction</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Orbitron',sans-serif;background:linear-gradient(120deg,#020617,#0f172a,#020617);color:white}
+header{text-align:center;padding:80px 20px;background:url('https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat}
+header h1{font-size:48px;margin:0}
+nav{position:sticky;top:0;background:#020617;display:flex;justify-content:center;gap:40px;padding:15px}
+nav a{color:white;text-decoration:none;font-weight:600}
+nav a:hover{color:#38bdf8}
+.section{display:none;padding:60px 20px;text-align:center}
+.active{display:block}
+.container{max-width:1100px;margin:auto}
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:40px}
+.card{background:#1e293b;padding:25px;width:230px;border-radius:14px;box-shadow:0 0 15px rgba(0,0,0,.5);transition:.2s}
+.card:hover{transform:translateY(-5px)}
+.btn{background:#38bdf8;border:none;padding:14px 26px;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:10px}
+.btn:hover{transform:scale(1.05)}
+.vote-card{background:#1e293b;padding:25px;margin:15px;border-radius:12px}
+footer{margin-top:60px;background:#020617;padding:20px;text-align:center;color:#94a3b8}
+input{padding:12px;border-radius:8px;border:none;margin-top:10px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>⚔️ PvP Faction 1.8.9</h1>
+<p>Le serveur faction compétitif</p>
+<button class="btn" onclick="copyIP()">Copier l'IP</button>
+<p>play.tonserveur.fr</p>
+</header>
+
+<nav>
+<a href="#" onclick="showSection('home')">Accueil</a>
+<a href="#" onclick="showSection('shop')">Boutique</a>
+<a href="#" onclick="showSection('vote')">Vote</a>
+</nav>
+
+<div id="home" class="section active">
+<div class="container">
+<h2>Bienvenue sur notre serveur</h2>
+<p>Forme ta faction, attaque tes ennemis et domine le serveur.</p>
+</div>
+</div>
+
+<div id="shop" class="section">
+<div class="container">
+<h2>Boutique - Crédits</h2>
+<p>Les paiements sont gérés automatiquement par Tebex. Les crédits arrivent directement en jeu.</p>
+
+<p>Entre ton pseudo Minecraft :</p>
+<input id="username" placeholder="Pseudo Minecraft">
+
+<div class="cards">
+
+<div class="card">
+<h3>1000 Crédits</h3>
+<p>10€</p>
+<button class="btn" onclick="buy('1000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>2000 Crédits</h3>
+<p>20€</p>
+<button class="btn" onclick="buy('2000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>3000 Crédits</h3>
+<p>30€</p>
+<button class="btn" onclick="buy('3000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>4000 Crédits</h3>
+<p>40€</p>
+<button class="btn" onclick="buy('4000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>5000 Crédits</h3>
+<p>50€</p>
+<button class="btn" onclick="buy('5000')">Acheter</button>
+</div>
+
+<div class="card">
+<h3>6000 Crédits</h3>
+<p>60€</p>
+<button class="btn" onclick="buy('6000')">Acheter</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="vote" class="section">
+<div class="container">
+<h2>Vote pour le serveur</h2>
+<p>Vote toutes les 24h pour recevoir automatiquement des récompenses en jeu.</p>
+
+<div class="vote-card">
+<h3>Serveur-Minecraft.org</h3>
+<button class="btn" onclick="vote('https://serveur-minecraft.org')">Voter</button>
+</div>
+
+<div class="vote-card">
+<h3>Top-Serveurs.net</h3>
+<button class="btn" onclick="vote('https://top-serveurs.net')">Voter</button>
+</div>
+
+<div class="vote-card">
+<h3>Minecraft-Serveurs.com</h3>
+<button class="btn" onclick="vote('https://minecraft-serveurs.com')">Voter</button>
+</div>
+
+<p style="margin-top:30px">⚡ Les récompenses sont envoyées automatiquement via le plugin Votifier / NuVotifier sur ton serveur Minecraft.</p>
+</div>
+</div>
+
+<footer>
+<p>© 2026 PvP Faction Server</p>
+</footer>
+
+<script>
+function showSection(section){
+const sections=document.querySelectorAll('.section');
+sections.forEach(s=>s.classList.remove('active'));
+document.getElementById(section).classList.add('active');
+}
+
+function copyIP(){
+navigator.clipboard.writeText('play.tonserveur.fr');
+alert('IP copiée : play.tonserveur.fr');
+}
+
+function buy(credits){
+let user=document.getElementById('username').value;
+if(!user){
+alert('Entre ton pseudo Minecraft');
+return;
+}
+
+/* Tebex checkout link (à remplacer par ton vrai store Tebex) */
+let url="https://tonserveur.tebex.io/?ign="+user+"&package="+credits;
+window.open(url,'_blank');
+}
+
+function vote(url){
+window.open(url,'_blank');
+}
+</script>
+
+</body>
+</html>
